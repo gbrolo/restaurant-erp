@@ -8,27 +8,28 @@
  */
 
 import React from 'react';
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom';
 
-import HomePage from 'containers/HomePage/Loadable'
-import Sidebar from '../../components/Sidebar/Loadable'
-import NotFoundPage from 'containers/NotFoundPage/Loadable'
+import HomePage from 'containers/HomePage/Loadable';
+import NotFoundPage from 'containers/NotFoundPage/Loadable';
+import Sidebar from '../../components/Sidebar/Loadable';
 
-import UserCreationPage from '../UserCreationPage/UserCreationPage'
-import Receipts from '../Receipts/Receipts'
-
+import UserCreationPage from '../UserCreationPage/UserCreationPage';
+import Receipts from '../Receipts/Receipts';
+import Inventory from '../Inventory/Inventory';
 export default function App() {
-    return (
+  return (
     <div>
-        <Sidebar />
-        <div style={{ marginLeft: 55, padding: 55 }}>
-            <Switch>
-                <Route exact path="/" component={HomePage} />
-                <Route path="/usuarios" component={UserCreationPage} />
-                <Route path="/facturas" component={Receipts} />
-                <Route component={NotFoundPage} />
-            </Switch> 
-        </div>
+      <Sidebar />
+      <div style={{ marginLeft: 55, padding: 55 }}>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/usuarios" component={UserCreationPage} />
+          <Route path="/facturas" component={Receipts} />
+          <Route path="/inventarios" component={Inventory} />
+          <Route component={NotFoundPage} />
+        </Switch>
+      </div>
     </div>
-    );
+  );
 }

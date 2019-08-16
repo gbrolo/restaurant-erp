@@ -1,0 +1,15 @@
+.receipt-component-container {
+    width: 100%;
+}
+
+.input-create {
+    margin-bottom: 20px;
+}
+
+.few {
+    color: red;
+}
+
+.normal {
+    color: black;
+}
