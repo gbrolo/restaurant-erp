@@ -17,6 +17,7 @@ import Sidebar from '../../components/Sidebar/Loadable';
 import UserCreationPage from '../UserCreationPage/UserCreationPage';
 import Receipts from '../Receipts/Receipts';
 import Inventory from '../Inventory/Inventory';
+import Proveedores from '../Proveedores/Proveedores';
 export default function App() {
   return (
     <div>
@@ -27,6 +28,7 @@ export default function App() {
           <Route path="/usuarios" component={UserCreationPage} />
           <Route path="/facturas" component={Receipts} />
           <Route path="/inventarios" component={Inventory} />
+          <Route path="/proveedores" component={Proveedores} />
           <Route component={NotFoundPage} />
         </Switch>
       </div>
