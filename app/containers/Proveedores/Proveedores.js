@@ -3,19 +3,41 @@ import { FaArrowLeft, FaArrowRight, FaReceipt, FaBoxOpen, FaHandsHelping, FaIdBa
 
 import ProveedorComponent from '../../components/ProveedorComponent/ProveedorComponent'
 
+import axios from 'axios';
+
 class Proveedores extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
+            products: null,
+          };
+    }
+    componentDidMount = () => {
+        axios({
+          method: 'GET',
+          url: 'http://localhost:8080/providers/low-stock-products',
+          data: {},
+        })
+          .then(response => {
+            console.log(response);
+            if (response.data.code === 200 && response.data.status === 'success') {
+              const products = JSON.parse(response.data.products);
+              console.log('algo');
+              console.log(products);
+              this.setState({ products });
+            }
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      };    
 
-        }
-    }    
-
-    render = () => {        
+    render = () => {
+        const { products } = this.state;        
         return (
             <div className="default-container flex-center">
-                <ProveedorComponent />
+               {products != null && <ProveedorComponent products={products} />}
             </div>
         )
     }
