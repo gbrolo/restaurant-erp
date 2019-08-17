@@ -16,13 +16,15 @@ class Inventory extends Component {
   componentDidMount = () => {
     axios({
       method: 'GET',
-      url: 'http://localhost:8080/receipts/getall', // Aqui debe cambiarse la ruta
+      url: 'http://localhost:8080/products/getall',
       data: {},
     })
       .then(response => {
         console.log(response);
         if (response.data.code === 200 && response.data.status === 'success') {
           const products = JSON.parse(response.data.products);
+          console.log('algo');
+          console.log(products);
           this.setState({ products });
         }
       })
@@ -36,7 +38,7 @@ class Inventory extends Component {
     console.log(products);
     return (
       <div className="default-container flex-center">
-        <InventoryComponent products={products} />
+        {products != null && <InventoryComponent products={products} />}
       </div>
     );
   };
