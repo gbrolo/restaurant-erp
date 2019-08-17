@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { FaArrowLeft, FaArrowRight, FaReceipt, FaBoxOpen, FaHandsHelping, FaIdBadge } from "react-icons/fa"
 
-import CreateUserComponent from '../../components/CreateUserComponent/CreateUserComponent'
+import ProveedorComponent from '../../components/ProveedorComponent/ProveedorComponent'
 
 class Proveedores extends Component {
     constructor(props) {
@@ -15,10 +15,10 @@ class Proveedores extends Component {
     render = () => {        
         return (
             <div className="default-container flex-center">
-                <CreateUserComponent />
+                <ProveedorComponent />
             </div>
         )
     }
 }
 
-export default Proveedores
+export default Proveedores;

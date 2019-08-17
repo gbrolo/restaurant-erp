@@ -324,8 +324,8 @@ function endProcess() {
 
     try {
       await initGitRepository();
-      //await addToGitRepository();
-      //await commitToGitRepository();
+      await addToGitRepository();
+      await commitToGitRepository();
     } catch (err) {
       reportError(err);
     }
