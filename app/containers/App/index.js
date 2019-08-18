@@ -18,6 +18,7 @@ import UserCreationPage from '../UserCreationPage/UserCreationPage';
 import Receipts from '../Receipts/Receipts';
 import Inventory from '../Inventory/Inventory';
 import Proveedores from '../Proveedores/Proveedores';
+import requestProduct from '../requestProduct/requestProduct';
 export default function App() {
   return (
     <div>
@@ -29,6 +30,7 @@ export default function App() {
           <Route path="/facturas" component={Receipts} />
           <Route path="/inventarios" component={Inventory} />
           <Route path="/proveedores" component={Proveedores} />
+          <Route path="/nuevoPedido" component={requestProduct} />
           <Route component={NotFoundPage} />
         </Switch>
       </div>

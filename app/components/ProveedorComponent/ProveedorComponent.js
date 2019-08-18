@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Card, CardBody, CardTitle, CardText, Input, CardFooter, Button,Form, FormGroup, Label, FormText} from "reactstrap"
-
+import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 
 // import './receipt-component.css'
@@ -14,7 +14,7 @@ class ProveedorComponent extends Component {
         };
     }    
 
-   
+   //TODO en este componente deberías mandar info del producto y armar el formulario
 
     render = () => {     
         const { products } = this.state;
@@ -34,7 +34,7 @@ class ProveedorComponent extends Component {
                       <CardText><strong>Disponibilidad: </strong>{item.stock}</CardText>
                     </CardBody>
                     <CardFooter>
-                        <Button onClick={() => this.createUser()}>Solicitar pedido</Button>
+                        <Button onClick={() => this.props.history.push('/nuevoPedido')}>Solicitar pedido</Button>
                     </CardFooter>
                 </Card>
             );
@@ -45,4 +45,4 @@ class ProveedorComponent extends Component {
     }
 }
 
-export default ProveedorComponent;
+export default withRouter(ProveedorComponent);
