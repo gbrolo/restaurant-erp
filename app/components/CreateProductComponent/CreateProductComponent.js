@@ -64,7 +64,6 @@ class CreateProductComponent extends Component {
                     </CardFooter>
                 </Card>
             </div>
-
         )
     }
 }
