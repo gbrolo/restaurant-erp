@@ -32,7 +32,7 @@ class InventoryComponent extends Component {
           {products.map((item, index) => {
             console.log(item);
             return (
-              <tr>
+              <tr key={index}>
                 <th scope="row">{index + 1}</th>
                 <td>{item.name}</td>
                 <td>{item.description}</td>

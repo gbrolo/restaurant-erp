@@ -52,8 +52,8 @@ class UserCreationPage extends React.Component {
         return (
             <div className="default-container flex-center">
                 <div className="default-container flex-center">
-                    <Nav tabs>
-                        <NavItem>
+                    <Nav tabs style={{ width: '100%' }}>
+                        <NavItem >
                             <NavLink
                                 className={classnames({ active: this.state.activeTab === '1' })}
                                 onClick={() => { this.toggle('1'); }}
@@ -70,7 +70,7 @@ class UserCreationPage extends React.Component {
                             </NavLink>
                         </NavItem>
                     </Nav>
-                    <TabContent activeTab={this.state.activeTab}>
+                    <TabContent activeTab={this.state.activeTab} style={{ width: '100%' }}>
                         <TabPane tabId="1">
                             <div className="default-container flex-center">
                                 <CreateUserComponent />
@@ -82,7 +82,7 @@ class UserCreationPage extends React.Component {
                                     users != null &&
                                     users.map((user, index) => {
                                         return (
-                                            <ListUserComponent user={user} />
+                                            <ListUserComponent key={index} user={user} />
                                         )
                                     })
                                 }

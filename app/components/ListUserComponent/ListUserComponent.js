@@ -75,11 +75,11 @@ class ListUserComponent extends Component {
         console.log(user)
 
         return (
-            <div>
+            <div style={{ width: '100%' }}>
                 <Card body>
                     <CardText>Nombre: {user.userName} </CardText>
                     <CardText>Correo electronico: {user.userEmail} </CardText>
-                    <Button onClick={this.toggle}> Editar </Button>
+                    <Button style={{ width: '50%' }} onClick={this.toggle}> Editar </Button>
                 </Card>
 
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>

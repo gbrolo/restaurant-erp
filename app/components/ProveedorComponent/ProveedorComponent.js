@@ -50,8 +50,8 @@ class ProveedorComponent extends Component {
         {products.map((item, index) => {
           console.log(item);
           return (
-            <div>
-              <Card key={index}>
+            <div key={index}>
+              <Card>
                 <CardBody>
 
                   <CardText><strong>Nombre: </strong>{item.name}</CardText>
@@ -70,8 +70,8 @@ class ProveedorComponent extends Component {
         <div id="divToPrint" >
           {items.map((item, index) => {
             return(
-              <div  >
-              <Card key={index}>
+              <div key={index}>
+              <Card>
                 <CardBody>
                   <CardText><strong>Nombre: </strong>{item.name}</CardText>
                   <CardText><strong>Precio unitario: </strong>{item.price}</CardText>

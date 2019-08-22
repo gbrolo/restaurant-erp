@@ -23,7 +23,7 @@ class Inventory extends Component {
         console.log(response);
         if (response.data.code === 200 && response.data.status === 'success') {
           const products = JSON.parse(response.data.products);
-          console.log('algo');
+          // console.log('algo');
           console.log(products);
           this.setState({ products });
         }
