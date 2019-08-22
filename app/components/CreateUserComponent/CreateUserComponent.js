@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
-import { Card, CardBody, CardTitle, CardText, Input, CardFooter, Button } from "reactstrap"
-
+import {
+    Card, CardBody, CardTitle, CardText, Input, CardFooter, Button, TabContent,
+    TabPane, Nav, NavItem, NavLink, Row, Col, ListGroup, ListGroupItem
+} from "reactstrap"
+import classnames from 'classnames';
 import axios from 'axios'
 
 // import './receipt-component.css'
@@ -9,18 +12,20 @@ class CreateUserComponent extends Component {
     constructor(props) {
         super(props)
 
+
         this.state = {
             name: '',
             email: '',
             password: '',
             passwordValidation: '',
-            userPermissions: []
+            userPermissions: [],
+            activeTab: '1'
         }
-    }    
+    }
 
     changeUserPermissions = (permission) => {
         const { userPermissions } = this.state
-        
+
         if (!userPermissions.includes(permission) && permission != 'null') {
             userPermissions.push(permission)
         }
@@ -45,9 +50,10 @@ class CreateUserComponent extends Component {
         })
     }
 
-    render = () => {     
+
+    render = () => {
         const { name, email, password, passwordValidation } = this.state
-        
+
         return (
             <div className="receipt-component-container">
                 <Card>
@@ -63,7 +69,7 @@ class CreateUserComponent extends Component {
                         }
                         <Input onChange={(e) => this.changeUserPermissions(event.target.value)} className="input-create" type="select" >
                             <option value="null">Selecciona permisos</option>
-                            <option value="all-access">all-access</option>                            
+                            <option value="all-access">all-access</option>
                         </Input>
                     </CardBody>
                     <CardFooter>
@@ -71,8 +77,21 @@ class CreateUserComponent extends Component {
                     </CardFooter>
                 </Card>
             </div>
+
         )
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 export default CreateUserComponent

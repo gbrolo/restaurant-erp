@@ -1,6 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { Card, CardBody, CardTitle, CardText, Input, CardFooter, Button,Form, FormGroup, Label, FormText} from "reactstrap"
 import { withRouter } from 'react-router-dom'
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf'
 import axios from 'axios'
 
 // import './receipt-component.css'
@@ -12,7 +14,20 @@ class ProveedorComponent extends Component {
         this.state = {
           products: this.props.products,
         };
-    }    
+    }  
+    
+    printDocument() {
+      const input = document.getElementById('divToPrint');
+      html2canvas(input)
+        .then((canvas) => {
+          const imgData = canvas.toDataURL('image/png');
+          const pdf = new jsPDF();
+          pdf.addImage(imgData, 'JPEG', 0, 0);
+          // pdf.output('dataurlnewwindow');
+          pdf.save("download.pdf");
+        })
+      ;
+    }  
 
    //TODO en este componente deberías mandar info del producto y armar el formulario
 
@@ -21,7 +36,7 @@ class ProveedorComponent extends Component {
         console.log(products);
         return (
          
-            <div className="receipt-component-container">
+            <div id="divToPrint" className="receipt-component-container">
                <h2>Productos con baja disponibilidad</h2>
                {products.map((item, index) => {
             console.log(item);
@@ -34,7 +49,7 @@ class ProveedorComponent extends Component {
                       <CardText><strong>Disponibilidad: </strong>{item.stock}</CardText>
                     </CardBody>
                     <CardFooter>
-                        <Button onClick={() => this.props.history.push('/nuevoPedido')}>Solicitar pedido</Button>
+                        <Button onClick={this.printDocument}>Solicitar pedido</Button>
                     </CardFooter>
                 </Card>
             );
