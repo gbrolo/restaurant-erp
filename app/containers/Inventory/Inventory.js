@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import InventoryComponent from '../../components/InventoryComponent/InventoryComponent';
+import CreateProductComponent from '../../components/CreateProductComponent/CreateProductComponent';
 
 class Inventory extends Component {
   constructor(props) {
@@ -38,6 +39,7 @@ class Inventory extends Component {
     console.log(products);
     return (
       <div className="default-container flex-center">
+        <CreateProductComponent />
         {products != null && <InventoryComponent products={products} />}
       </div>
     );
