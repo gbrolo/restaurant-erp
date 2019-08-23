@@ -12,8 +12,8 @@ class InventoryComponent extends Component {
       modal: false,
       name:'',
       des:' ',
-      price:' ',
-      stock: ' ',
+      price:0,
+      stock: 0,
       date: ' ',
       id: ''
     };
