@@ -26,7 +26,7 @@ class ListUserComponent extends Component {
     }
 
     changeName = (name) => {
-        const { user } = this.state
+        const { user } = this.state.user
 
         user.userName = name
 
