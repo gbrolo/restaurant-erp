@@ -19,7 +19,8 @@ class InventoryComponent extends Component {
     };
     this.toggle = this.toggle.bind(this);
   }
-  toggle(name,description,date,stock,price) {
+  toggle(id,name,description,date,stock,price) {
+    this.setState({ id: id })
     this.setState({ name: name })
     this.setState({ des: description })
     this.setState({ price: price })
@@ -29,7 +30,7 @@ class InventoryComponent extends Component {
       modal: !prevState.modal
     }));
   }
-  updateProduct = () => {
+  updateProduct = (idd) => {
     const name  = this.state.name;
     const des = this.state.des;
     const date = this.state.date;
@@ -98,19 +99,16 @@ console.log(JSON.stringify(product))
 changeName = (name,id) => {
 
   this.setState({ name: name })
-  this.setState({ id: id })
+  //this.setState({ id: id })
 
-  this.setState({ product })
   console.log('cambio de nombre')
   console.log(this.state)
 }
 
 changedate = (name) => {
-  const { product } = this.state
 
   product.date = name
 
-  this.setState({ product })
   console.log('cambio de nombre')
   console.log(this.state)
 }
@@ -119,7 +117,6 @@ changestock = (name) => {
 
   product.stock = name
 
-  this.setState({ product })
   console.log('cambio de nombre')
   console.log(this.state)
 }
@@ -127,8 +124,6 @@ changeprice = (name) => {
   const { product } = this.state
 
   product.price = name
-
-  this.setState({ product })
   console.log('cambio de nombre')
   console.log(this.state)
 }
@@ -169,7 +164,7 @@ changeprice = (name) => {
                   <Input onChange={(e) => this.setState({ price: e.target.value })}  className="input-create" type="text" placeholder={this.state.price} />
               </ModalBody>
               <ModalFooter>
-                  <Button color="primary" onClick={this.updateProduct}>Aceptar</Button>{' '}
+                  <Button color="primary" onClick={()=>this.updateProduct(item.id)}>Aceptar</Button>{' '}
                   <Button color="secondary" onClick={this.toggle}>Cancelar</Button>
               </ModalFooter>
           </Modal>
@@ -179,7 +174,7 @@ changeprice = (name) => {
                 <td>{item.date}</td>
                 <td>{item.stock}</td>
                 <td>{item.price}</td>
-                <td><Button style={{ width: '100%',height:'10%' }} onClick={()=>this.toggle(item.name,item.description,item.date,item.stock,item.price)}> Editar </Button>
+                <td><Button style={{ width: '100%',height:'10%' }} onClick={()=>this.toggle(item.id,item.name,item.description,item.date,item.stock,item.price)}> Editar </Button>
                 <br></br><br></br>
                 <Button style={{ width: '100%',height:'10%' }} onClick={() =>this.deleteProduct(item.id)}> Eliminar</Button>
                 </td>
