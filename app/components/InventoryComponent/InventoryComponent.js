@@ -19,7 +19,12 @@ class InventoryComponent extends Component {
     };
     this.toggle = this.toggle.bind(this);
   }
-  toggle() {
+  toggle(name,description,date,stock,price) {
+    this.setState({ name: name })
+    this.setState({ des: description })
+    this.setState({ price: price })
+    this.setState({ stock: stock })
+    this.setState({ date: date })
     this.setState(prevState => ({
       modal: !prevState.modal
     }));
@@ -153,15 +158,15 @@ changeprice = (name) => {
               <ModalHeader toggle={this.toggle}>Actualizar datos</ModalHeader>
               <ModalBody>
                   <Label> Actualizar nombre</Label>
-                  <Input onChange={(e) => this.changeName(e.target.value,item.id)}  className="input-create" type="text" placeholder={item.name} />
+                  <Input onChange={(e) => this.changeName(e.target.value,item.id)}  className="input-create" type="text" placeholder={this.state.name} />
                   <Label> Actualizar Descripción</Label>
-                  <Input onChange={(e) => this.setState({ des: e.target.value })}  className="input-create" type="text" placeholder={item.description} />
+                  <Input onChange={(e) => this.setState({ des: e.target.value })}  className="input-create" type="text" placeholder={this.state.des} />
                   <Label> Actualizar fecha de caducidad</Label>
-                  <Input onChange={(e) => this.setState({ date: e.target.value })}  className="input-create" type="text" placeholder={item.date} />
+                  <Input onChange={(e) => this.setState({ date: e.target.value })}  className="input-create" type="text" placeholder={this.state.date} />
                   <Label> Actualizar Stock</Label>
-                  <Input onChange={(e) => this.setState({ stock: e.target.value })} className="input-create" type="text" placeholder={item.stock} />
+                  <Input onChange={(e) => this.setState({ stock: e.target.value })} className="input-create" type="text" placeholder={this.state.stock} />
                   <Label> Actualizar Precio</Label>
-                  <Input onChange={(e) => this.setState({ price: e.target.value })}  className="input-create" type="text" placeholder={item.price} />
+                  <Input onChange={(e) => this.setState({ price: e.target.value })}  className="input-create" type="text" placeholder={this.state.price} />
               </ModalBody>
               <ModalFooter>
                   <Button color="primary" onClick={this.updateProduct}>Aceptar</Button>{' '}
@@ -174,7 +179,7 @@ changeprice = (name) => {
                 <td>{item.date}</td>
                 <td>{item.stock}</td>
                 <td>{item.price}</td>
-                <td><Button style={{ width: '100%',height:'10%' }} onClick={this.toggle}> Editar </Button>
+                <td><Button style={{ width: '100%',height:'10%' }} onClick={()=>this.toggle(item.name,item.description,item.date,item.stock,item.price)}> Editar </Button>
                 <br></br><br></br>
                 <Button style={{ width: '100%',height:'10%' }} onClick={() =>this.deleteProduct(item.id)}> Eliminar</Button>
                 </td>
