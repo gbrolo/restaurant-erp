@@ -19,6 +19,9 @@ import Receipts from '../Receipts/Receipts';
 import Inventory from '../Inventory/Inventory';
 import Proveedores from '../Proveedores/Proveedores';
 import requestProduct from '../requestProduct/requestProduct';
+
+import OrderProducts from '../OrderProducts/OrderProducts'
+
 export default function App() {
   return (
     <div>
@@ -29,6 +32,7 @@ export default function App() {
           <Route path="/usuarios" component={UserCreationPage} />
           <Route path="/facturas" component={Receipts} />
           <Route path="/inventarios" component={Inventory} />
+          <Route path="/productos-ordenes" component={OrderProducts} />
           <Route path="/proveedores" component={Proveedores} />
           <Route path="/nuevoPedido" component={requestProduct} />
           <Route component={NotFoundPage} />

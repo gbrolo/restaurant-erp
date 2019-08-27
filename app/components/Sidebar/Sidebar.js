@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
-import { FaArrowLeft, FaArrowRight, FaReceipt, FaBoxOpen, FaHandsHelping, FaIdBadge } from "react-icons/fa"
+import { FaArrowLeft, FaArrowRight, FaReceipt, FaBoxOpen, FaHandsHelping, FaIdBadge, FaBook } from "react-icons/fa"
 
 import './sidebar.css'
 
@@ -44,6 +44,9 @@ class Sidebar extends Component {
                             <div className='sidebar-option' onClick={() => this.props.history.push('/inventarios')}>
                                 <FaBoxOpen className="icon-separator-sidebar"/>Inventarios
                             </div>
+                            <div className='sidebar-option' onClick={() => this.props.history.push('/productos-ordenes')}>
+                                <FaBook className="icon-separator-sidebar"/>Gestionar productos de órdenes
+                            </div>
                             <div className='sidebar-option' onClick={() => this.props.history.push('/proveedores')}>
                                 <FaHandsHelping className="icon-separator-sidebar"/>Pedidos a proveedores
                             </div>
@@ -65,6 +68,9 @@ class Sidebar extends Component {
                             </div>
                             <div className='sidebar-option' onClick={() => this.props.history.push('/inventarios')}>
                                 <FaBoxOpen />
+                            </div>
+                            <div className='sidebar-option' onClick={() => this.props.history.push('/productos-ordenes')}>
+                                <FaBook />
                             </div>
                             <div className='sidebar-option' onClick={() => this.props.history.push('/proveedores')}>
                                 <FaHandsHelping />

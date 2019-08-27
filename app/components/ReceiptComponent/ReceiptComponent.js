@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Card, CardBody, CardTitle, CardText } from "reactstrap"
 
+import axios from 'axios'
+
 import './receipt-component.css'
 
 class ReceiptComponent extends Component {
@@ -8,33 +10,62 @@ class ReceiptComponent extends Component {
         super(props)
 
         this.state = {     
-            receipt: this.props.receipt       
+            receipt: this.props.receipt,
+            receiptItems: null
         }
-    }    
+    }  
+    
+    componentDidMount = () => {
+        const { receipt } = this.state
+
+        let receiptItems = []
+
+        receipt.receiptItems.forEach((item, index, array) => {
+            axios({
+                method: 'POST',
+                url: 'http://localhost:8080/order-products/get',                    
+                data: { id: item.id }
+            }).then(response => {
+                console.log('response', response)
+                if (response.data.code === 200 && response.data.status === 'success') {
+                    const orderProduct = JSON.parse(response.data.product)
+                    orderProduct['quantity'] = item.quantity
+                    console.log(orderProduct)
+                    receiptItems.push(orderProduct)
+
+                    this.setState({ receiptItems })
+                }
+            })                
+        })
+    }
 
     render = () => {     
-        const { receipt } = this.state
+        const { receipt, receiptItems } = this.state
         console.log(receipt)
 
         return (
             <div className="receipt-component-container">
-                <Card>
-                    <CardBody>
-                        <CardTitle><strong>Factura: </strong>{receipt.id}</CardTitle>
-                        <CardText><strong>Nombre: </strong>{receipt.name}</CardText>
-                        <CardText><strong>Nit: </strong>{receipt.nit}</CardText>
-                        <CardText><strong>Dirección: </strong>{receipt.address}</CardText>
-                        <CardText><strong>Fecha: </strong>{new Date(receipt.date_created.seconds * 1000).toString()}</CardText>
-                        {
-                            receipt.receiptItems.map((item, index) => {
-                                return(
-                                    <CardText key={index}>({item.quantity}) {item.name}, Total: Q. {item.price * item.quantity}</CardText>
-                                )
-                            })
-                        }
-                        <CardText><strong>Total facturado: </strong>Q. {parseFloat(receipt.total)}</CardText>
-                    </CardBody>
-                </Card>
+                {
+                    receiptItems != null &&
+                    <Card>
+                        <CardBody>
+                            <CardTitle><strong>Factura: </strong>{receipt.id}</CardTitle>
+                            <CardText><strong>Nombre: </strong>{receipt.name}</CardText>
+                            <CardText><strong>Nit: </strong>{receipt.nit}</CardText>
+                            <CardText><strong>Dirección: </strong>{receipt.address}</CardText>
+                            <CardText><strong>Fecha: </strong>{new Date(receipt.date_created.seconds * 1000).toString()}</CardText>
+                            {
+                                receiptItems.map((item, index) => {
+                                    return(
+                                        <CardText key={index}>({item.quantity}) {item.name}, Total: Q. {item.retailPrice * item.quantity}</CardText>
+                                    )
+                                })
+                            }
+                            <CardText><strong>Subtotal </strong>Q. {parseFloat(receipt.total)}</CardText>
+                            <CardText><strong>Total más impuestos: </strong>Q. {parseFloat(receipt.total) + parseFloat(receipt.total * 0.12)}</CardText>
+                        </CardBody>
+                    </Card>
+                }
             </div>
         )
     }
