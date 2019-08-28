@@ -16,8 +16,8 @@ class CreateProductComponent extends Component {
                 date: null,
                 description: null,
                 name: null,
-                price: null,
-                stock: null
+                price: 0,
+                stock: 0
             }
         }
     }

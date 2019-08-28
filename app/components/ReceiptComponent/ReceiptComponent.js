@@ -38,7 +38,9 @@ class ReceiptComponent extends Component {
             })                
         })
     }
+    verifyIsCoke(){
 
+    }
     render = () => {     
         const { receipt, receiptItems } = this.state
         console.log(receipt)
@@ -62,6 +64,7 @@ class ReceiptComponent extends Component {
                                 })
                             }
                             <CardText><strong>Subtotal </strong>Q. {parseFloat(receipt.total)}</CardText>
+                           
                             <CardText><strong>Total más impuestos: </strong>Q. {parseFloat(receipt.total) + parseFloat(receipt.total * 0.12)}</CardText>
                         </CardBody>
                     </Card>
