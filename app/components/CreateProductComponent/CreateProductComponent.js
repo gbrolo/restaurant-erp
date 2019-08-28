@@ -56,8 +56,8 @@ class CreateProductComponent extends Component {
                         <Input onChange={(e) => this.changeProductProperty('name', e.target.value)} className="input-create" type="text" placeholder="Nombre" />
                         <Input onChange={(e) => this.changeProductProperty('description', e.target.value)} className="input-create" type="text" placeholder="Descripción" />
                         <Input onChange={(e) => this.changeProductProperty('date', e.target.value)} className="input-create" type="text" placeholder="Fecha de caducidad AAAA-MM-DD" />
-                        <Input onChange={(e) => this.changeProductProperty('stock', e.target.value)} className="input-create" type="numeric" placeholder="Stock" />
-                        <Input onChange={(e) => this.changeProductProperty('price', e.target.value)} className="input-create" type="numeric" placeholder="Precio por unidad" />
+                        <Input onChange={(e) => this.changeProductProperty('stock', parseInt(e.target.value))} className="input-create" type="numeric" placeholder="Stock" />
+                        <Input onChange={(e) => this.changeProductProperty('price', parseFloat(e.target.value))} className="input-create" type="numeric" placeholder="Precio por unidad" />
                     </CardBody>
                     <CardFooter>
                         <Button onClick={() => this.createProduct()}>Crear producto</Button>

@@ -159,9 +159,9 @@ changeprice = (name) => {
                   <Label> Actualizar fecha de caducidad</Label>
                   <Input onChange={(e) => this.setState({ date: e.target.value })}  className="input-create" type="text" placeholder={this.state.date} />
                   <Label> Actualizar Stock</Label>
-                  <Input onChange={(e) => this.setState({ stock: e.target.value })} className="input-create" type="numeric" placeholder={this.state.stock} />
+                  <Input onChange={(e) => this.setState({ stock: parseInt(e.target.value) })} className="input-create" type="numeric" placeholder={this.state.stock} />
                   <Label> Actualizar Precio</Label>
-                  <Input onChange={(e) => this.setState({ price: e.target.value })}  className="input-create" type="numeric" placeholder={this.state.price} />
+                  <Input onChange={(e) => this.setState({ price: parseFloat(e.target.value) })}  className="input-create" type="numeric" placeholder={this.state.price} />
               </ModalBody>
               <ModalFooter>
                   <Button color="primary" onClick={()=>this.updateProduct(item.id)}>Aceptar</Button>{' '}
