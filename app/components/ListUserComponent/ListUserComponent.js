@@ -53,7 +53,7 @@ class ListUserComponent extends Component {
         this.toggle()
         axios({
             method: "POST",
-            url: "http://localhost:8080/users/update",
+            url: "http://35.166.113.228:8080/users/update",
             data: {user: JSON.stringify(user)}
         }).then(response => {
             console.log(response)

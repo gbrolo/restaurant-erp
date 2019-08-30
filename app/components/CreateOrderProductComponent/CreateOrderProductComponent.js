@@ -59,7 +59,7 @@ class CreateOrderProductComponent extends Component {
 
         axios({
             method: "POST",
-            url: "http://localhost:8080/order-products/create",
+            url: "http://35.166.113.228:8080/order-products/create",
             data: { product: JSON.stringify(product) }
         }).then(response => {
             console.log(response)
@@ -74,7 +74,7 @@ class CreateOrderProductComponent extends Component {
     componentDidMount = () => {
         axios({
             method: 'GET',
-            url: 'http://localhost:8080/products/getall',
+            url: 'http://35.166.113.228:8080/products/getall',
             data: {},
         }).then(response => {
             if (response.data.code === 200 && response.data.status === 'success') {

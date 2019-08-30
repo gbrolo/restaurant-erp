@@ -16,7 +16,7 @@ class Receipts extends Component {
     componentDidMount = () => {
         axios({
             method: "GET",
-            url: "http://localhost:8080/receipts/getall",
+            url: "http://35.166.113.228:8080/receipts/getall",
             data: {}
         }).then(response => {
             console.log(response)

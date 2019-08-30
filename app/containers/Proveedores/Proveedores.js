@@ -16,7 +16,7 @@ class Proveedores extends Component {
     componentDidMount = () => {
         axios({
           method: 'GET',
-          url: 'http://localhost:8080/providers/low-stock-products',
+          url: 'http://35.166.113.228:8080/providers/low-stock-products',
           data: {},
         })
           .then(response => {

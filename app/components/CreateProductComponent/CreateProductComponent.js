@@ -33,7 +33,7 @@ class CreateProductComponent extends Component {
 
         axios({
             method: "POST",
-            url: "http://localhost:8080/products/create",
+            url: "http://35.166.113.228:8080/products/create",
             data: { product: JSON.stringify(product) }
         }).then(response => {
             console.log(response)
