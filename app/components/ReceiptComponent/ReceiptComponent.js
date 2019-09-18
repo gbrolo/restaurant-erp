@@ -20,30 +20,37 @@ class ReceiptComponent extends Component {
 
         let receiptItems = []
 
+        this.axiosCancelSource = axios.CancelToken.source()
+
         receipt.receiptItems.forEach((item, index, array) => {
             axios({
                 method: 'POST',
                 url: 'http://35.166.113.228:8080/order-products/get',                    
-                data: { id: item.id }
+                data: { id: item.id },
+                cancelToken: this.axiosCancelSource.token
             }).then(response => {
-                console.log('response', response)
+                // console.log('response', response)
                 if (response.data.code === 200 && response.data.status === 'success') {
                     const orderProduct = JSON.parse(response.data.product)
                     orderProduct['quantity'] = item.quantity
-                    console.log(orderProduct)
+                    // console.log(orderProduct)
                     receiptItems.push(orderProduct)
 
                     this.setState({ receiptItems })
                 }
+            }).catch(error => {
+                
             })                
         })
     }
-    verifyIsCoke(){
-
+    
+    componentWillUnmount = () => {
+        this.axiosCancelSource.cancel('Receipt unmounted.')
     }
+
     render = () => {     
         const { receipt, receiptItems } = this.state
-        console.log(receipt)
+        // console.log(receipt)
 
         return (
             <div className="receipt-component-container">

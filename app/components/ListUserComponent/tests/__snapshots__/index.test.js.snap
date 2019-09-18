@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ListUserComponent /> renders the ListUserComponent component and matches snapshot 1`] = `
+<div
+  style="width: 100%;"
+>
+  <div
+    class="card card-body"
+  >
+    <p
+      class="card-text"
+    >
+      Nombre: 
+      Rodrigo
+       
+    </p>
+    <p
+      class="card-text"
+    >
+      Correo electronico: 
+      bar15800@uvg.edu.gt
+       
+    </p>
+    <button
+      class="btn btn-secondary"
+      style="width: 50%;"
+      type="button"
+    >
+       Editar 
+    </button>
+  </div>
+</div>
+`;

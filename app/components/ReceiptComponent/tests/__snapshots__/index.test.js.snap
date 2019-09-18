@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ReceiptComponent /> renders the ReceiptComponent component and matches snapshot 1`] = `
+<div
+  class="receipt-component-container"
+/>
+`;
