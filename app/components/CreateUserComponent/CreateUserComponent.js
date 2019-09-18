@@ -38,7 +38,7 @@ class CreateUserComponent extends Component {
 
         axios({
             method: "POST",
-            url: "http://localhost:8080/users/create",
+            url: "http://35.166.113.228:8080/users/create",
             data: { name, email, password, userPermissions: JSON.stringify(userPermissions) }
         }).then(response => {
             console.log(response)

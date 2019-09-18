@@ -51,7 +51,7 @@ class InventoryComponent extends Component {
     this.toggle()
     axios({
         method: "POST",
-        url: "http://localhost:8080/products/update",
+        url: "http://35.166.113.228:8080/products/update",
         data: {product: JSON.stringify(product)}
     }).then(response => {
         console.log(response)
@@ -81,7 +81,7 @@ console.log(product)
 console.log(JSON.stringify(product))
   axios({
       method: "POST",
-      url: "http://localhost:8080/products/delete",
+      url: "http://35.166.113.228:8080/products/delete",
       data: {id:id}
   }).then(response => {
       console.log(response)

@@ -20,7 +20,7 @@ class HomePage extends Component {
 
 		axios({
             method: "POST",
-            url: "http://localhost:8080/users/login",
+            url: "http://35.166.113.228:8080/users/login",
 			data: { email, password }
         }).then(response => {
 			console.log(response)

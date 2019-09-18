@@ -23,7 +23,7 @@ class ReceiptComponent extends Component {
         receipt.receiptItems.forEach((item, index, array) => {
             axios({
                 method: 'POST',
-                url: 'http://localhost:8080/order-products/get',                    
+                url: 'http://35.166.113.228:8080/order-products/get',                    
                 data: { id: item.id }
             }).then(response => {
                 console.log('response', response)
